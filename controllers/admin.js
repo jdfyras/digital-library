@@ -327,6 +327,7 @@ exports.getUserProfile = async (req, res, next) => {
             issues: issues,
             activities: activities,
             comments: comments,
+			url: url,
         });
     } catch (err) {
         console.log(err);

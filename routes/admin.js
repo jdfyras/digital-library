@@ -1,14 +1,14 @@
 const express = require("express"),
-      router = express.Router(),
-      passport = require("passport"),
-      // fs = require("fs"),
-      // path = require("path"),
-      middleware = require("../middleware"),
-      User = require("../models/user"),
-      Book = require("../models/book"),
-      Activity = require("../models/activity"),
-      Issue = require("../models/issue"),
-      Comment = require("../models/comment");
+	router = express.Router(),
+	passport = require("passport"),
+	// fs = require("fs"),
+	// path = require("path"),
+	middleware = require("../middleware"),
+	User = require("../models/user"),
+	Book = require("../models/book"),
+	Activity = require("../models/activity"),
+	Issue = require("../models/issue"),
+	Comment = require("../models/comment");
 
 // importing controller
 const adminController = require('../controllers/admin');
@@ -30,6 +30,21 @@ router.post("/admin/bookInventory/:filter/:value/:page", middleware.isAdmin, adm
 
 //admin -> show books to be updated
 router.get("/admin/book/update/:book_id", middleware.isAdmin, adminController.getUpdateBook);
+router.get("/admin/book/download/:book_id", async (req, res) => {
+	try {
+		const book_id = req.params.book_id;
+		const book = await Book.findById(book_id);
+		
+		// const filepath = 'http://localhost:3000/docs/' + "AR - M460N_20211216_182320.pdf;
+		res.render('download', {
+			path: filepath
+		});
+	} catch (err) {
+		console.log(err);
+		return res.redirect('back');
+	}
+
+})
 
 //admin -> update book
 router.post("/admin/book/update/:book_id", middleware.isAdmin, adminController.postUpdateBook);

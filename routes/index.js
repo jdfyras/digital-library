@@ -9,6 +9,9 @@ const User = require("../models/user");
 router.get('/', (req, res) => {
    res.render("landing"); 
 });
+router.get('/document', (req, res) => {
+	res.render("document"); 
+});
 
 //admin login handler
 router.get("/adminLogin", (req, res) => {

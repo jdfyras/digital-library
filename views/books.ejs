@@ -9,6 +9,8 @@
       <a class="navbar-brand" href="/user/1">Home</a>
       <% } else if(currentUser.isAdmin) { %>
       <a class="navbar-brand" href="/admin">Home</a>
+      <% } else { %>
+      <a class="navbar-brand" href="/">Home</a>
       <% } %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -17,7 +19,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item active  px-2">
-            <a class="nav-link" href="/books/all/all/1">Browse Books</a></a>
+            <a class="nav-link" href="/books/all/all/1">Browse Documents</a></a>
           </li>
         </ul>
           
@@ -74,15 +76,16 @@
         <div class="col-md-5 p-1">
           <select name="filter" class="form-control">
             <option selected disabled>Select Filter...</option>
-            <option  name="title">Title</option>
-            <option  name="author">Author</option>
-            <option  name="category">Category</option>
-            <option  name="ISBN">ISBN</option>
+            <option  name="title">Rapport PFE</option>
+            <option  name="author">Cours</option>
+            <option  name="category">TP</option>
+            <option  name="ISBN">Devoir de controle</option>
+            <option  name="ISBN">Examen</option>
           </select>
         </div>
         
          <div class="col-md-5 p-1">
-          <input name="searchName"  type="text" class="form-control" placeholder="Search Books">
+          <input name="searchName"  type="text" class="form-control" placeholder="Search Documents">
         </div>
         
          <div class="col-md-2 p-1">
@@ -110,9 +113,7 @@
             <p class="text-muted">
               <small class="text-muted">Category : <%=books[i].category%></small>
             </p>
-            <p class="text-muted">
-              <small class="text-muted">In stock : <%=books[i].stock%></small>
-            </p>
+            
            
             
             <% if(currentUser && books[i].stock > 0) { var match = false%>
@@ -129,7 +130,7 @@
             </form>
             <% } %>
             <% } %>
-            <a href="/books/details/<%=books[i]._id%>" class="btn btn-xs btn-primary">Details</a>
+            <a href="<%=books[i].url%>" class="btn btn-xs btn-primary">Details</a>
           </div>
         </div>
     <% } %>

@@ -17,7 +17,7 @@ async function seed(limit) {
             const book = new Book({
                 title: faker.lorem.words(),
                 ISBN: faker.random.uuid(),
-                stock: 10,
+                
                 author: author[index2],
                 description: faker.lorem.paragraphs(3),
                 category: category[index1],

@@ -191,7 +191,7 @@ exports.postIssueBook = async(req, res, next) => {
         const user = await User.findById(req.params.user_id);
 
         // registering issue
-        book.stock -= 1;
+        
         const issue =  new Issue({
             book_info: {
                 id: book._id,
@@ -199,7 +199,7 @@ exports.postIssueBook = async(req, res, next) => {
                 author: book.author,
                 ISBN: book.ISBN,
                 category: book.category,
-                stock: book.stock,
+                
             },
             user_id: {
                 id: user._id,
@@ -320,7 +320,7 @@ exports.postReturnBook = async(req, res, next) => {
         
         // fetching book from db and increament
         const book = await Book.findById(book_id);
-        book.stock += 1;
+        
         await book.save();
 
         // removing issue 

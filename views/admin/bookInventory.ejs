@@ -8,7 +8,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <h1><i class="fa fa-pencil"></i> Book Inventory</h1>
+        <h1><i class="fa fa-pencil"></i> Document Inventory</h1>
       </div>
     </div>
   </div>
@@ -22,15 +22,17 @@
         <div class="col-md-5 p-1">
           <select name="filter" class="form-control">
             <option selected disabled>Select Option...</option>
-            <option  name="title">Title</option>
-            <option  name="author">Author</option>
-            <option  name="category">Category</option>
+            <option  name="title">Rapport PFE</option>
+            <option  name="author">Cours</option>
+            <option  name="category">TP</option>
+            <option  name="category">Devoir de controle</option>
+            <option  name="category">Examen</option>
             <!-- <option  name="ISBN">By ISBN</option> -->
           </select>
         </div>
         
          <div class="col-md-5 p-1">
-          <input name="searchName"  type="text" class="form-control" placeholder="Search Books">
+          <input name="searchName"  type="text" class="form-control" placeholder="Search Documents">
         </div>
         
          <div class="col-md-2 p-1">
@@ -56,7 +58,6 @@
                 <th>Author</th>
                 <th>ISBN</th>
                 <th>Catergory</th>
-                <th>In Stock</th>
                 <th>Edit</th>
               </tr>
             </thead>
@@ -69,9 +70,9 @@
                 <td><%= book.author %> </td>
                 <td><%= book.ISBN %></td>
                 <td><%= book.category %></td>
-                <td><%= book.stock %></td>
                 <td>
                     <span>
+                        <a href="<%=book.url%>" class="btn btn-info btn-sm">download</a>
                         <a href="/admin/book/update/<%=book._id%>" class="btn btn-info btn-sm">Update</a>
                         <a href="/admin/book/delete/<%=book._id%>" class="btn btn-sm btn-danger">Delete</a>
                     </span>
